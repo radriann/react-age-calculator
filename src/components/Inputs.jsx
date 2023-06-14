@@ -1,7 +1,26 @@
 import { FormControl, FormLabel, Input, Flex, Button, Image } from '@chakra-ui/react'
 import arrowDown from '../assets/icon-arrow.svg'
+import { useContext } from 'react'
+import { AgeContext } from '../context/AgeContext'
 
 export const Inputs = () => {
+  const { setDay, setMonth, setYear, calculateAge } = useContext(AgeContext)
+
+  const handleDay = (e) => {
+    const value = String(e.target.value)
+    setDay(value)
+  }
+
+  const handleMonth = (e) => {
+    const value = String(e.target.value)
+    setMonth(value)
+  }
+
+  const handleYear = (e) => {
+    const value = String(e.target.value)
+    setYear(value)
+  }
+
   return (
     <Flex
       as='section'
@@ -21,6 +40,7 @@ export const Inputs = () => {
           Day
         </FormLabel>
         <Input
+          onChange={handleDay}
           type='number'
           borderColor='neutral.smokey-grey'
           autoComplete='off'
@@ -44,6 +64,7 @@ export const Inputs = () => {
           Month
         </FormLabel>
         <Input
+          onChange={handleMonth}
           type='number'
           borderColor='neutral.smokey-grey'
           autoComplete='off'
@@ -67,6 +88,7 @@ export const Inputs = () => {
           Year
         </FormLabel>
         <Input
+          onChange={handleYear}
           type='number'
           borderColor='neutral.smokey-grey'
           autoComplete='off'
@@ -79,12 +101,13 @@ export const Inputs = () => {
       </FormControl>
 
       <Button
+        onClick={calculateAge}
         bgColor='primary.custom-purple'
         position='absolute'
         w={{ base: '65px', md: '80px' }}
         h={{ base: '65px', md: '80px' }}
         borderRadius='100%'
-        bottom={{ base: '-90px', md: '-50px' }}
+        bottom={{ base: '-90px', md: '-60px' }}
         right={{ base: '40%', md: '0' }}
         _hover={{ bgColor: 'neutral.off-black' }}
       >

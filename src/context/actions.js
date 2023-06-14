@@ -1,0 +1,6 @@
+export const ACTIONS = {
+  SET_DAY: 'SET_DAY',
+  SET_MONTH: 'SET_MONTH',
+  SET_YEAR: 'SET_YEAR',
+  CALCULATE_AGE: 'CALCULATE_AGE'
+}

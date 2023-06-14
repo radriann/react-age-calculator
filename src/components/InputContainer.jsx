@@ -9,7 +9,7 @@ export const InputContainer = () => {
         w={{ base: '100%', md: '45%' }}
         bgColor='white'
         borderRadius='12px'
-        borderBottomRightRadius='50px'
+        borderBottomRightRadius='90px'
         h='fit-content'
         py='2rem'
         px='1rem'
@@ -32,6 +32,7 @@ export const InputContainer = () => {
           <Heading
             mt='.5rem'
             fontSize={{ base: '38px', md: '55px' }}
+            fontStyle='italic'
           >
             <chakra.span color='primary.custom-purple'>- - </chakra.span>
             years
@@ -39,6 +40,7 @@ export const InputContainer = () => {
           <Heading
             mt='.5rem'
             fontSize={{ base: '38px', md: '55px' }}
+            fontStyle='italic'
           >
             <chakra.span color='primary.custom-purple'>- - </chakra.span>
             months
@@ -46,6 +48,7 @@ export const InputContainer = () => {
           <Heading
             mt='.5rem'
             fontSize={{ base: '38px', md: '55px' }}
+            fontStyle='italic'
           >
             <chakra.span color='primary.custom-purple'>- - </chakra.span>
             days
