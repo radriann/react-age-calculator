@@ -9,7 +9,10 @@ export const AgeContextProvider = ({ children }) => {
     day: null,
     month: null,
     year: null,
-    error: false,
+    error: {
+      isError: false,
+      message: ''
+    },
     resultDay: 0,
     resultMonth: 0,
     resultYear: 0
@@ -34,6 +37,50 @@ export const AgeContextProvider = ({ children }) => {
 
   const calculateAge = () => {
     const { day, month, year } = state
+
+    if (!day && !month && !year) {
+      dispatch({
+        type: ACTIONS.SET_ERROR,
+        payload: {
+          isError: true,
+          message: 'This field is required!'
+        }
+      })
+      return
+    }
+
+    if (day > 31 || day < 1) {
+      dispatch({
+        type: ACTIONS.SET_ERROR,
+        payload: {
+          isError: true,
+          message: 'Must be a valid day!'
+        }
+      })
+      return
+    }
+
+    if (month > 12 || month < 1) {
+      dispatch({
+        type: ACTIONS.SET_ERROR,
+        payload: {
+          isError: true,
+          message: 'Must be a valid month!'
+        }
+      })
+      return
+    }
+
+    if (year > 2023) {
+      dispatch({
+        type: ACTIONS.SET_ERROR,
+        payload: {
+          isError: true,
+          message: 'Must be in the past!'
+        }
+      })
+      return
+    }
 
     const currentDate = new Date()
     const birthDate = new Date(year, month - 1, day)

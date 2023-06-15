@@ -1,16 +1,21 @@
-import { FormControl, FormLabel, Input } from '@chakra-ui/react'
+import { FormControl, FormLabel, Input, FormErrorMessage } from '@chakra-ui/react'
+import { useContext } from 'react'
+import { AgeContext } from '../context/AgeContext'
 
 export const AgeInput = ({ handleInput, name, w }) => {
+  const { error } = useContext(AgeContext)
   const width = w || '70px'
 
   return (
     <FormControl
+      isInvalid={error.isError}
       mx={{ base: '.5rem', md: '1rem' }}
       w={{ base: 'fit-content', md: '20%' }}
     >
       <FormLabel
         color='neutral.smokey-grey'
-        textTransform='uppercase' letterSpacing='3px'
+        textTransform='uppercase'
+        letterSpacing='3px'
         fontWeight='600'
         fontSize={{ base: '12px', md: '14px' }}
       >
@@ -27,6 +32,12 @@ export const AgeInput = ({ handleInput, name, w }) => {
         fontWeight='800'
         _hover={{ borderColor: 'neutral.smokey-grey' }}
       />
+      <FormErrorMessage
+        fontSize='10px'
+        fontWeight='600'
+      >
+        {error.message}
+      </FormErrorMessage>
     </FormControl>
   )
 }

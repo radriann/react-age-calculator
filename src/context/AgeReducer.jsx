@@ -28,6 +28,15 @@ export const AgeReducer = (state, action) => {
         resultDay: action.payload.days
       }
 
+    case ACTIONS.SET_ERROR:
+      return {
+        ...state,
+        error: {
+          isError: action.payload.isError,
+          message: action.payload.message
+        }
+      }
+
     default:
       return state
   }
