@@ -1,7 +1,8 @@
-import { Box, Heading, chakra } from '@chakra-ui/react'
+import { Box } from '@chakra-ui/react'
 import { Inputs } from './Inputs'
 import { useContext } from 'react'
 import { AgeContext } from '../context/AgeContext'
+import { AgeResult } from './AgeResult'
 
 export const InputContainer = () => {
   const { resultYear, resultMonth, resultDay } = useContext(AgeContext)
@@ -33,30 +34,9 @@ export const InputContainer = () => {
           flexDirection='column'
           mt='3rem'
         >
-          <Heading
-            mt='.5rem'
-            fontSize={{ base: '38px', md: '55px' }}
-            fontStyle='italic'
-          >
-            <chakra.span color='primary.custom-purple'>{resultYear || '- -'} </chakra.span>
-            years
-          </Heading>
-          <Heading
-            mt='.5rem'
-            fontSize={{ base: '38px', md: '55px' }}
-            fontStyle='italic'
-          >
-            <chakra.span color='primary.custom-purple'>{resultMonth || '- -'} </chakra.span>
-            months
-          </Heading>
-          <Heading
-            mt='.5rem'
-            fontSize={{ base: '38px', md: '55px' }}
-            fontStyle='italic'
-          >
-            <chakra.span color='primary.custom-purple'>{resultDay || '- -'} </chakra.span>
-            days
-          </Heading>
+          <AgeResult name='years' result={resultYear} />
+          <AgeResult name='months' result={resultMonth} />
+          <AgeResult name='days' result={resultDay} />
         </Box>
       </Box>
     </>
