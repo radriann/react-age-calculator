@@ -1,7 +1,11 @@
 import { Box, Heading, chakra } from '@chakra-ui/react'
 import { Inputs } from './Inputs'
+import { useContext } from 'react'
+import { AgeContext } from '../context/AgeContext'
 
 export const InputContainer = () => {
+  const { resultYear, resultMonth, resultDay } = useContext(AgeContext)
+
   return (
     <>
       <Box
@@ -34,7 +38,7 @@ export const InputContainer = () => {
             fontSize={{ base: '38px', md: '55px' }}
             fontStyle='italic'
           >
-            <chakra.span color='primary.custom-purple'>- - </chakra.span>
+            <chakra.span color='primary.custom-purple'>{resultYear || '- -'} </chakra.span>
             years
           </Heading>
           <Heading
@@ -42,7 +46,7 @@ export const InputContainer = () => {
             fontSize={{ base: '38px', md: '55px' }}
             fontStyle='italic'
           >
-            <chakra.span color='primary.custom-purple'>- - </chakra.span>
+            <chakra.span color='primary.custom-purple'>{resultMonth || '- -'} </chakra.span>
             months
           </Heading>
           <Heading
@@ -50,7 +54,7 @@ export const InputContainer = () => {
             fontSize={{ base: '38px', md: '55px' }}
             fontStyle='italic'
           >
-            <chakra.span color='primary.custom-purple'>- - </chakra.span>
+            <chakra.span color='primary.custom-purple'>{resultDay || '- -'} </chakra.span>
             days
           </Heading>
         </Box>

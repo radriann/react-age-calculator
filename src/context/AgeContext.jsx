@@ -6,25 +6,30 @@ export const AgeContext = createContext(null)
 
 export const AgeContextProvider = ({ children }) => {
   const initialState = {
-    day: 0,
-    month: 0,
-    year: 0,
+    day: null,
+    month: null,
+    year: null,
     error: false,
-    result: 0
+    resultDay: 0,
+    resultMonth: 0,
+    resultYear: 0
   }
 
   const [state, dispatch] = useReducer(AgeReducer, initialState)
 
-  const setDay = (day) => {
-    dispatch({ type: ACTIONS.SET_DAY, payload: day })
+  const handleDay = (e) => {
+    const value = String(e.target.value)
+    dispatch({ type: ACTIONS.SET_DAY, payload: value })
   }
 
-  const setMonth = (month) => {
-    dispatch({ type: ACTIONS.SET_MONTH, payload: month })
+  const handleMonth = (e) => {
+    const value = String(e.target.value)
+    dispatch({ type: ACTIONS.SET_MONTH, payload: value })
   }
 
-  const setYear = (year) => {
-    dispatch({ type: ACTIONS.SET_YEAR, payload: year })
+  const handleYear = (e) => {
+    const value = String(e.target.value)
+    dispatch({ type: ACTIONS.SET_YEAR, payload: value })
   }
 
   const calculateAge = () => {
@@ -50,7 +55,6 @@ export const AgeContextProvider = ({ children }) => {
       }
     }
     )
-    console.log(ageInDays, ageInMonths, ageInYears)
   }
 
   return (
@@ -60,10 +64,12 @@ export const AgeContextProvider = ({ children }) => {
         month: state.month,
         year: state.year,
         error: state.error,
-        result: state.result,
-        setDay,
-        setMonth,
-        setYear,
+        resultDay: state.resultDay,
+        resultMonth: state.resultMonth,
+        resultYear: state.resultYear,
+        handleDay,
+        handleMonth,
+        handleYear,
         calculateAge
       }}
     >

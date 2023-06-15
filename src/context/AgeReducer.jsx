@@ -23,9 +23,9 @@ export const AgeReducer = (state, action) => {
     case ACTIONS.CALCULATE_AGE:
       return {
         ...state,
-        year: action.payload.years,
-        month: action.payload.months,
-        day: action.payload.days
+        resultYear: action.payload.years,
+        resultMonth: action.payload.months,
+        resultDay: action.payload.days
       }
 
     default:

@@ -4,22 +4,7 @@ import { useContext } from 'react'
 import { AgeContext } from '../context/AgeContext'
 
 export const Inputs = () => {
-  const { setDay, setMonth, setYear, calculateAge } = useContext(AgeContext)
-
-  const handleDay = (e) => {
-    const value = String(e.target.value)
-    setDay(value)
-  }
-
-  const handleMonth = (e) => {
-    const value = String(e.target.value)
-    setMonth(value)
-  }
-
-  const handleYear = (e) => {
-    const value = String(e.target.value)
-    setYear(value)
-  }
+  const { handleDay, handleMonth, handleYear, calculateAge } = useContext(AgeContext)
 
   return (
     <Flex
