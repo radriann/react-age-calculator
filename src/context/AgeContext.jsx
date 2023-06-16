@@ -20,19 +20,17 @@ export const AgeContextProvider = ({ children }) => {
 
   const [state, dispatch] = useReducer(AgeReducer, initialState)
 
-  const handleDay = (e) => {
+  const handleInput = (e) => {
+    const field = String(e.target.name)
     const value = String(e.target.value)
-    dispatch({ type: ACTIONS.SET_DAY, payload: value })
-  }
 
-  const handleMonth = (e) => {
-    const value = String(e.target.value)
-    dispatch({ type: ACTIONS.SET_MONTH, payload: value })
-  }
-
-  const handleYear = (e) => {
-    const value = String(e.target.value)
-    dispatch({ type: ACTIONS.SET_YEAR, payload: value })
+    dispatch({
+      type: ACTIONS.SET_FIELD,
+      payload: {
+        field,
+        value
+      }
+    })
   }
 
   const calculateAge = () => {
@@ -82,6 +80,8 @@ export const AgeContextProvider = ({ children }) => {
       return
     }
 
+    dispatch({ type: ACTIONS.SET_ERROR, payload: { isError: false, message: '' } })
+
     const currentDate = new Date()
     const birthDate = new Date(year, month - 1, day)
     const ageInMiliseconds = currentDate - birthDate
@@ -107,16 +107,8 @@ export const AgeContextProvider = ({ children }) => {
   return (
     <AgeContext.Provider
       value={{
-        day: state.day,
-        month: state.month,
-        year: state.year,
-        error: state.error,
-        resultDay: state.resultDay,
-        resultMonth: state.resultMonth,
-        resultYear: state.resultYear,
-        handleDay,
-        handleMonth,
-        handleYear,
+        ...state,
+        handleInput,
         calculateAge
       }}
     >

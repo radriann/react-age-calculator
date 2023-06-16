@@ -5,7 +5,7 @@ import { AgeInput } from './AgeInput'
 import arrowDown from '../assets/icon-arrow.svg'
 
 export const Inputs = () => {
-  const { handleDay, handleMonth, handleYear, calculateAge } = useContext(AgeContext)
+  const { calculateAge } = useContext(AgeContext)
 
   return (
     <Flex
@@ -14,9 +14,9 @@ export const Inputs = () => {
       alignItems='center'
       position='relative'
     >
-      <AgeInput name='Day' handleInput={handleDay} />
-      <AgeInput name='Month' handleInput={handleMonth} />
-      <AgeInput name='Year' handleInput={handleYear} w='90px' />
+      <AgeInput name='Day' />
+      <AgeInput name='Month' />
+      <AgeInput name='Year' w='90px' />
 
       <Button
         onClick={calculateAge}
