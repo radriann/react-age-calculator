@@ -33,7 +33,8 @@ export const AgeContextProvider = ({ children }) => {
     })
   }
 
-  const calculateAge = () => {
+  const calculateAge = (e) => {
+    e.preventDefault()
     const { day, month, year } = state
 
     if (!day && !month && !year) {
